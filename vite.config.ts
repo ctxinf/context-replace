@@ -25,8 +25,8 @@ export default defineConfig(({ mode }) => {
       VitePWA({
         registerType: "autoUpdate",
         manifest: {
-          name: "Context Protector",
-          short_name: "Context Protector",
+          name: "Context Replace",
+          short_name: "Context Replace",
           description:
             "An offline tool to replace sensitive text in your context",
           theme_color: "#ffffff",

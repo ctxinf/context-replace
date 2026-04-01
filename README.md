@@ -1,6 +1,6 @@
-<!--# Context Protector ![Context Protector](/public/favicon.ico)-->
+<!--# Context Replace ![Context Replace](/public/favicon.ico)-->
 <h1 align="center">
-  <img src="/public/icon-192.png" alt="icon" width="24" height="24">   Context Protector
+  <img src="/public/icon-192.png" alt="icon" width="24" height="24">   Context Replace
 </h1>
 
 <div align="center" style="display: flex; justify-content: center; align-items: center; gap: 4rem; flex-wrap: nowrap;">
@@ -19,9 +19,9 @@
 </video>
 
 
-## ✨ Why Context Protector?
+## ✨ Why Context Replace?
 
-When using AI sites like ChatGPT, Claude, or Gemini, you often need to share code snippets, logs, or documents that may contain sensitive informations. Context Protector helps you redact them.
+When using AI sites like ChatGPT, Claude, or Gemini, you often need to share code snippets, logs, or documents that may contain sensitive informations. Context Replace helps you redact them.
 
 - 🎯 **Precision Control** - Use regex or exact text matching for perfect replacements
 - 🚀 **Work Faster** - Paste, replace, and copy in seconds
@@ -73,7 +73,7 @@ npm run preview
 
 ## 📊 Data Storage
 
-Context Protector stores all your data locally in your browser using the **Origin Private File System (OPFS)**.
+Context Replace stores all your data locally in your browser using the **Origin Private File System (OPFS)**.
 
 
 ## 🛠️ Development Setup

@@ -19,7 +19,7 @@
           <div class="flex flex-col">
             <div class="relative">
               <h1 class="text-xl font-bold tracking-tight text-foreground leading-none">
-                Context Protector
+                Context Replace
               </h1>
             </div>
             <span class="text-xs font-medium text-foreground-secondary mt-1">

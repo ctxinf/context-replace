@@ -1,6 +1,6 @@
-<!--# Context Protector ![Context Protector](/public/favicon.ico)-->
+<!--# Context Replace ![Context Replace](/public/favicon.ico)-->
 <h1 align="center">
-  <img src="/public/icon-192.png" alt="icon" width="24" height="24">   Context Protector
+  <img src="/public/icon-192.png" alt="icon" width="24" height="24">   Context Replace
 </h1>
 
 [English Documentation](./README.md) 
@@ -18,9 +18,9 @@
 **在将内容粘贴到ChatGPT、Claude、Gemini或任何其他AI网站之前，替换您的敏感数据**
 
 
-## ✨ 为什么选择 Context Protector？
+## ✨ 为什么选择 Context Replace？
 
-当使用像ChatGPT、Claude或Gemini这样的AI网站时，您经常需要分享可能包含敏感信息的代码片段、日志或文档。Context Protector帮助您替换这些信息。
+当使用像ChatGPT、Claude或Gemini这样的AI网站时，您经常需要分享可能包含敏感信息的代码片段、日志或文档。Context Replace帮助您替换这些信息。
 
 - 🎯 **精确控制** - 使用正则表达式或精确文本匹配进行完美替换
 - 🚀 **提高效率** - 粘贴、替换和复制，只需几秒钟
@@ -64,7 +64,7 @@ services:
 
 ## 📊 数据存储
 
-Context Protector使用**Origin Private File System (OPFS)**在您的浏览器中本地存储所有数据。
+Context Replace使用**Origin Private File System (OPFS)**在您的浏览器中本地存储所有数据。
 
 ## 🎥 使用演示
 

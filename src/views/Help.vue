@@ -65,7 +65,7 @@
         <h1
           class="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-linear-to-b from-white to-gray-400 tracking-tight"
         >
-          Context Protector
+          Context Replace
         </h1>
         <p class="text-base text-gray-400 font-light leading-relaxed">
           Setting rules to
