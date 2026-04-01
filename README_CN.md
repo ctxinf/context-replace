@@ -7,10 +7,10 @@
 
 
 <div align="center" style="display: flex; justify-content: center; align-items: center; gap: 4rem; flex-wrap: nowrap;">
-<a href="https://context-protector.api2o.com" target="_blank">🌐在线使用</a>
+<a href="https://context-replace.ctxinf.com" target="_blank">🌐在线使用</a>
 <br/>
-<a href="https://vercel.com/new/clone?repository-url=https://github.com/slow-groovin/context-protector"><img src="https://vercel.com/button" alt="Deploy with Vercel" style="height: 24px;"></a>
-<a href="https://deploy.workers.cloudflare.com/?url=https://github.com/slow-groovin/context-protector"><img src="https://camo.githubusercontent.com/aa3de9a0130879a84691a2286f5302105d5f3554c5d0af4e3f2f24174eeeea25/68747470733a2f2f6465706c6f792e776f726b6572732e636c6f7564666c6172652e636f6d2f627574746f6e" alt="Deploy to Cloudflare Workers" style="height: 24px;"></a>
+<a href="https://vercel.com/new/clone?repository-url=https://github.com/ctxinf/context-replace"><img src="https://vercel.com/button" alt="Deploy with Vercel" style="height: 24px;"></a>
+<a href="https://deploy.workers.cloudflare.com/?url=https://github.com/ctxinf/context-replace"><img src="https://camo.githubusercontent.com/aa3de9a0130879a84691a2286f5302105d5f3554c5d0af4e3f2f24174eeeea25/68747470733a2f2f6465706c6f792e776f726b6572732e636c6f7564666c6172652e636f6d2f627574746f6e" alt="Deploy to Cloudflare Workers" style="height: 24px;"></a>
 </div>
 
 **一个保护您在使用AI模型时隐私的工具**
@@ -29,7 +29,7 @@
 ## 🚀 安装和使用
 
 ### 🌐 在线使用（推荐）
-直接访问 [https://context-protector.api2o.com](https://context-protector.api2o.com) 即可开始使用 - 无需安装。
+直接访问 [https://context-replace.ctxinf.com](https://context-replace.ctxinf.com) 即可开始使用 - 无需安装。
 
 ### 📱 PWA安装
 1. 访问网页应用
@@ -38,25 +38,25 @@
 
 ### 📦 本地部署
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/slow-groovin/context-protector)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ctxinf/context-replace)
 
-[![Deploy to Cloudflare Workers](https://camo.githubusercontent.com/aa3de9a0130879a84691a2286f5302105d5f3554c5d0af4e3f2f24174eeeea25/68747470733a2f2f6465706c6f792e776f726b6572732e636c6f7564666c6172652e636f6d2f627574746f6e)](https://deploy.workers.cloudflare.com/?url=https://github.com/slow-groovin/context-protector)
+[![Deploy to Cloudflare Workers](https://camo.githubusercontent.com/aa3de9a0130879a84691a2286f5302105d5f3554c5d0af4e3f2f24174eeeea25/68747470733a2f2f6465706c6f792e776f726b6572732e636c6f7564666c6172652e636f6d2f627574746f6e)](https://deploy.workers.cloudflare.com/?url=https://github.com/ctxinf/context-replace)
 
 **🐳 Docker**
 ```sh
 docker run -d \
-  --name context-protector \
+  --name context-replace \
   -p 8080:80 \
   --restart unless-stopped \
-  ghcr.io/slow-groovin/context-protector:latest
+  ghcr.io/ctxinf/context-replace:latest
 ```
 
 compose.yml
 ```yml
 services:
-  context-protector:
-    image: ghcr.io/slow-groovin/context-protector:latest
-    container_name: context-protector
+  context-replace:
+    image: ghcr.io/ctxinf/context-replace:latest
+    container_name: context-replace
     ports:
       - "8080:80"
     restart: unless-stopped
@@ -73,8 +73,8 @@ Context Protector使用**Origin Private File System (OPFS)**在您的浏览器�
 ## 🛠️ 开发环境设置
 ```bash
 # 克隆仓库
-git clone https://github.com/slow-groovin/context-protector-web.git
-cd context-protector-web
+git clone https://github.com/ctxinf/context-replace-web.git
+cd context-replace-web
 
 # 安装依赖
 npm install

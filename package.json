@@ -1,9 +1,9 @@
 {
-  "name": "context-protector",
+  "name": "context-replace",
   "private": true,
-  "version": "0.0.7",
+  "version": "0.1.0",
   "type": "module",
-  "homepage": "https://slow-groovin.github.io/context-protector/",
+  "homepage": "https://ctxinf.github.io/context-replace/",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",

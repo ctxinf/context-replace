@@ -23,7 +23,7 @@
 - [x] 本地化
 - [] ~~支持single html, 添加流程:打包至静态资源目录, 作为下载连接~~
 - [x] "?"使用说明, 动态视频
-- [x] 配置 剪切板导出 以context-protector:// 开头
+- [x] 配置 剪切板导出 以context-replace:// 开头
 - [x] 导入功能, 与兼容版本号
 - [ ] ~~实现restore功能, 交互逻辑: replace后, 在任务创建后且有效(左侧input栏目没有变动编辑)时出现restore按钮(在左侧栏), 点击restore按钮,  右侧(是的,复用了)显示restore内容~~
 - [ ] ~~重新设计restore功能~~

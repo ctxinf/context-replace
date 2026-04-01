@@ -3,7 +3,7 @@ import { SQLocalDrizzle } from "sqlocal/drizzle";
 import { sql } from "drizzle-orm";
 import * as schema from "./schema";
 
-const DB_NAME = "context-protector.sqlite3";
+const DB_NAME = "context-replace.sqlite3";
 
 let db: ReturnType<typeof drizzle<typeof schema>> | null = null;
 let sqlocalDrizzle: SQLocalDrizzle | null = null;

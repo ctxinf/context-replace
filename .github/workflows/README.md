@@ -39,15 +39,15 @@ The workflow is triggered by:
 ### Pull the Docker Image
 ```bash
 # Pull latest version
-docker pull ghcr.io/your-username/context-protector-web:latest
+docker pull ghcr.io/your-username/context-replace-web:latest
 
 # Pull specific version
-docker pull ghcr.io/your-username/context-protector-web:v1.0.0
+docker pull ghcr.io/your-username/context-replace-web:v1.0.0
 ```
 
 ### Run the Container
 ```bash
-docker run -p 8080:80 ghcr.io/your-username/context-protector-web:latest
+docker run -p 8080:80 ghcr.io/your-username/context-replace-web:latest
 ```
 
 ## Environment Variables

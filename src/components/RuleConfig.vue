@@ -355,7 +355,7 @@ interface EditableReplaceRule extends ReplaceRule {
 }
 
 // 使用 useLocalStorage 持久化规则配置面板的展开/折叠状态到本地存储
-const isOpen = useLocalStorage("context-protector-rule-config-open", false);
+const isOpen = useLocalStorage("context-replace-rule-config-open", false);
 const rulesStore = useRulesStore();
 const isAdding = ref(false);
 const { t } = useI18n();
@@ -456,7 +456,7 @@ const exportConfig = async () => {
   };
 
   const configStr = JSON.stringify(config);
-  const url = `context-protector://import/${configStr}`;
+  const url = `context-replace://import/${configStr}`;
 
   try {
     await navigator.clipboard.writeText(url);
@@ -486,7 +486,7 @@ const importConfig = async () => {
     // Optional: Ask for confirmation if we read automatically to avoid confusion
     // but "One click import" is usually preferred.
     // Checking if it looks like our config
-    if (!clipText.includes("context-protector")) {
+    if (!clipText.includes("context-replace")) {
       // If clipboard content doesn't look like config, prompt user
       const input = prompt("the input text is not a valid config", "");
       if (input) clipText = input;
@@ -498,7 +498,7 @@ const importConfig = async () => {
 
   try {
     // 1. Clean format
-    const prefix = "context-protector://import/";
+    const prefix = "context-replace://import/";
     let jsonStr = clipText.trim();
     if (jsonStr.startsWith(prefix)) {
       jsonStr = jsonStr.slice(prefix.length);

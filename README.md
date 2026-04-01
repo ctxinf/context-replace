@@ -5,11 +5,11 @@
 
 <div align="center" style="display: flex; justify-content: center; align-items: center; gap: 4rem; flex-wrap: nowrap;">
 <a href="./README_CN.md">中文README</a> 
-<a href="https://context-protector.api2o.com" target="_blank">🌐Try it</a>
+<a href="https://context-replace.ctxinf.com" target="_blank">🌐Try it</a>
 <br/>
 <br/>
-<a href="https://vercel.com/new/clone?repository-url=https://github.com/slow-groovin/context-protector"><img src="https://vercel.com/button" alt="Deploy with Vercel" style=""></a>
-<a href="https://deploy.workers.cloudflare.com/?url=https://github.com/slow-groovin/context-protector"><img src="https://camo.githubusercontent.com/aa3de9a0130879a84691a2286f5302105d5f3554c5d0af4e3f2f24174eeeea25/68747470733a2f2f6465706c6f792e776f726b6572732e636c6f7564666c6172652e636f6d2f627574746f6e" alt="Deploy to Cloudflare Workers" style="height: 34px;"></a>
+<a href="https://vercel.com/new/clone?repository-url=https://github.com/ctxinf/context-replace"><img src="https://vercel.com/button" alt="Deploy with Vercel" style=""></a>
+<a href="https://deploy.workers.cloudflare.com/?url=https://github.com/ctxinf/context-replace"><img src="https://camo.githubusercontent.com/aa3de9a0130879a84691a2286f5302105d5f3554c5d0af4e3f2f24174eeeea25/68747470733a2f2f6465706c6f792e776f726b6572732e636c6f7564666c6172652e636f6d2f627574746f6e" alt="Deploy to Cloudflare Workers" style="height: 34px;"></a>
 </div>
 
 **Replace your sensitive data before pasting it to ChatGPT, Claude, Gemini, or any other AI sites**
@@ -31,7 +31,7 @@ When using AI sites like ChatGPT, Claude, or Gemini, you often need to share cod
 
 ### 1. Web
 
-Simply visit [https://context-protector.api2o.com](https://context-protector.api2o.com) and start using immediately - no installation required.
+Simply visit [https://context-replace.ctxinf.com](https://context-replace.ctxinf.com) and start using immediately - no installation required.
 
 **PWA Installation**
 
@@ -41,25 +41,25 @@ Simply visit [https://context-protector.api2o.com](https://context-protector.api
 
 ### 2. Self Hosted
 #### Serverless
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/slow-groovin/context-protector)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ctxinf/context-replace)
 
-[![Deploy to Cloudflare Workers](https://camo.githubusercontent.com/aa3de9a0130879a84691a2286f5302105d5f3554c5d0af4e3f2f24174eeeea25/68747470733a2f2f6465706c6f792e776f726b6572732e636c6f7564666c6172652e636f6d2f627574746f6e)](https://deploy.workers.cloudflare.com/?url=https://github.com/slow-groovin/context-protector)
+[![Deploy to Cloudflare Workers](https://camo.githubusercontent.com/aa3de9a0130879a84691a2286f5302105d5f3554c5d0af4e3f2f24174eeeea25/68747470733a2f2f6465706c6f792e776f726b6572732e636c6f7564666c6172652e636f6d2f627574746f6e)](https://deploy.workers.cloudflare.com/?url=https://github.com/ctxinf/context-replace)
 
 #### 🐳 Docker
 ```sh
 docker run -d \
-  --name context-protector \
+  --name context-replace \
   -p 8080:80 \
   --restart unless-stopped \
-  ghcr.io/slow-groovin/context-protector:latest
+  ghcr.io/ctxinf/context-replace:latest
 ```
 
 **Docker Compose**
 ```yml
 services:
-  context-protector:
-    image: ghcr.io/slow-groovin/context-protector:latest
-    container_name: context-protector
+  context-replace:
+    image: ghcr.io/ctxinf/context-replace:latest
+    container_name: context-replace
     ports:
       - "8080:80"
     restart: unless-stopped
@@ -80,8 +80,8 @@ Context Protector stores all your data locally in your browser using the **Origi
 
 ```bash
 # Clone the repository
-git clone https://github.com/slow-groovin/context-protector.git
-cd context-protector
+git clone https://github.com/ctxinf/context-replace.git
+cd context-replace
 
 # Install dependencies
 npm install

@@ -35,7 +35,7 @@
             placement="bottom">
             <img src="/offline.png" :alt="t.offlineFunction" class="size-4" />
           </HoverInfo>
-          <a href="https://github.com/slow-groovin/context-protector" target="_blank"
+          <a href="https://github.com/ctxinf/context-replace" target="_blank"
             class="size-7 p-1 bg-button-bg hover:bg-button-bg text-foreground-secondary hover:text-foreground rounded-md flex items-center justify-center text-sm font-bold transition-colors"
             title="View on GitHub">
             <svg class="size-6" fill="currentColor" viewBox="0 0 24 24">
@@ -226,9 +226,9 @@ const inputText = ref("");
 const outputText = ref("");
 const outputContainer = ref<HTMLDivElement>();
 // 使用 useLocalStorage 持久化自动复制状态到本地存储
-const autoCopy = useLocalStorage("context-protector-auto-copy", false);
+const autoCopy = useLocalStorage("context-replace-auto-copy", false);
 // 使用 useLocalStorage 持久化头部展开/折叠状态到本地存储
-const isHeaderExpanded = useLocalStorage("context-protector-header-expanded", true);
+const isHeaderExpanded = useLocalStorage("context-replace-header-expanded", true);
 
 // Logic State
 const replaceCount = ref(0);
