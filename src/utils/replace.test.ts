@@ -1,6 +1,13 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { applyReplace, type ReplaceRule, restoreDefaultRules, DEFAULT_RULES } from './replace';
 
+function expectedSpan(ruleId: number, content: string): string {
+  const hue = (ruleId * 49) % 360;
+  const bgColor = `hsl(${hue}, 85%, 95%)`;
+  const borderColor = `hsl(${hue}, 70%, 70%)`;
+  return `<span style="background-color: ${bgColor}; color: #000; border: 1px solid ${borderColor}; border-radius: 4px; padding: 2px 4px; margin: 0 1px; font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace; font-weight: 500;">${content}</span>`;
+}
+
 describe('applyReplace', () => {
   it('should replace fixed string with highlighting', () => {
     const rules: ReplaceRule[] = [
@@ -8,7 +15,7 @@ describe('applyReplace', () => {
     ];
     const input = 'hello world';
     const result = applyReplace(input, rules);
-    expect(result.result).toBe('<span style="background-color: hsl(49, 70%, 90%);">hi</span> world');
+    expect(result.result).toBe(`${expectedSpan(1, 'hi')} world`);
   });
 
   it('should replace regex with highlighting', () => {
@@ -17,7 +24,7 @@ describe('applyReplace', () => {
     ];
     const input = 'hello world';
     const result = applyReplace(input, rules);
-    expect(result.result).toBe('<span style="background-color: hsl(98, 70%, 90%);">word</span> <span style="background-color: hsl(98, 70%, 90%);">word</span>');
+    expect(result.result).toBe(`${expectedSpan(2, 'word')} ${expectedSpan(2, 'word')}`);
   });
 
   it('should handle multiple rules', () => {
@@ -27,7 +34,7 @@ describe('applyReplace', () => {
     ];
     const input = 'abc';
     const result = applyReplace(input, rules);
-    expect(result.result).toBe('<span style="background-color: hsl(49, 70%, 90%);">A</span><span style="background-color: hsl(98, 70%, 90%);">B</span>c');
+    expect(result.result).toBe(`${expectedSpan(1, 'A')}${expectedSpan(2, 'B')}c`);
   });
 
   it('should escape HTML in target', () => {
@@ -36,7 +43,7 @@ describe('applyReplace', () => {
     ];
     const input = 'test';
     const result = applyReplace(input, rules);
-    expect(result.result).toBe('<span style="background-color: hsl(49, 70%, 90%);\">&lt;script&gt;</span>');
+    expect(result.result).toBe(expectedSpan(1, '&lt;script&gt;'));
   });
 
   it('should handle no matches', () => {
@@ -54,10 +61,8 @@ describe('applyReplace', () => {
     ];
     const input = 'a b a';
     const result = applyReplace(input, rules);
-    expect(result.result).toBe('<span style="background-color: hsl(49, 70%, 90%);">A</span> b <span style="background-color: hsl(49, 70%, 90%);">A</span>');
+    expect(result.result).toBe(`${expectedSpan(1, 'A')} b ${expectedSpan(1, 'A')}`);
   });
-
-  // 测试预设input，但那是页面逻辑，这里只测函数
 });
 
 describe('applyReplace - complex scenarios', () => {
@@ -78,12 +83,10 @@ function foo() {
 var react = require('react');
     `;
     const result = applyReplace(input, rules);
-    // Note: replacements are applied in order, so 'var' -> 'let', then 'let' -> 'const', but since 'var' is already 'let', wait no
-    // In this code, rules are applied sequentially, so first 'var' to 'let', then 'let' to 'const' on the result.
-    expect(result.result).toContain('<span style="background-color: hsl(49, 70%, 90%);">let</span>'); // var -> let
-    expect(result.result).toContain('<span style="background-color: hsl(98, 70%, 90%);">const</span>'); // let -> const
-    expect(result.result).toContain('<span style="background-color: hsl(147, 70%, 90%);">vue</span>'); // react -> vue
-    expect(result.result).toContain('<span style="background-color: hsl(196, 70%, 90%);">arrow</span>'); // function -> arrow
+    expect(result.result).toContain(expectedSpan(1, 'let')); // var -> let
+    expect(result.result).toContain(expectedSpan(2, 'const')); // let -> const
+    expect(result.result).toContain(expectedSpan(3, 'vue')); // react -> vue
+    expect(result.result).toContain(expectedSpan(4, 'arrow')); // function -> arrow
   });
 
   it('should handle path name replacements in code', () => {
@@ -93,8 +96,8 @@ var react = require('react');
     ];
     const input = 'import from /src/utils.js; const file = "/src/index.js";';
     const result = applyReplace(input, rules);
-    expect(result.result).toContain('<span style="background-color: hsl(245, 70%, 90%);">/dist/</span>');
-    expect(result.result).toContain('<span style="background-color: hsl(294, 70%, 90%);">.ts</span>');
+    expect(result.result).toContain(expectedSpan(5, '/dist/'));
+    expect(result.result).toContain(expectedSpan(6, '.ts'));
   });
 
   it('should handle Chinese text with multiple repeated replacements', () => {
@@ -105,9 +108,9 @@ var react = require('react');
     ];
     const input = '你好，世界！这是我的世界的你好。世界很大，的的的。';
     const result = applyReplace(input, rules);
-    expect(result.result).toContain('<span style="background-color: hsl(343, 70%, 90%);">您好</span>');
-    expect(result.result).toContain('<span style="background-color: hsl(32, 70%, 90%);">地球</span>');
-    expect(result.result).toContain('<span style="background-color: hsl(81, 70%, 90%);">之</span>');
+    expect(result.result).toContain(expectedSpan(7, '您好'));
+    expect(result.result).toContain(expectedSpan(8, '地球'));
+    expect(result.result).toContain(expectedSpan(9, '之'));
     // Count occurrences
     const countNihao = (result.result.match(/您好/g) || []).length;
     const countWorld = (result.result.match(/地球/g) || []).length;
@@ -119,12 +122,10 @@ var react = require('react');
 
   describe('restoreDefaultRules', () => {
     beforeEach(() => {
-      // Clear localStorage before each test
       localStorage.clear();
     });
 
     afterEach(() => {
-      // Clean up after each test
       localStorage.clear();
     });
 
@@ -135,20 +136,17 @@ var react = require('react');
     });
 
     it('should update existing default rules and keep custom rules', () => {
-      // First, add some custom rules
       const customRules: ReplaceRule[] = [
         { id: 11, match: { type: 'fixed', value: 'custom' }, target: { type: 'fixed', value: 'modified' } },
         { id: 12, match: { type: 'fixed', value: 'another' }, target: { type: 'fixed', value: 'rule' } }
       ];
 
-      // Simulate existing rules (some default, some custom)
       const existingRules: ReplaceRule[] = [
-        { id: 1, match: { type: 'fixed', value: 'old' }, target: { type: 'fixed', value: 'value' } }, // modified default
-        { id: 11, match: { type: 'fixed', value: 'custom' }, target: { type: 'fixed', value: 'modified' } }, // custom
-        { id: 2, match: { type: 'fixed', value: 'existing' }, target: { type: 'fixed', value: 'default' } } // modified default
+        { id: 1, match: { type: 'fixed', value: 'old' }, target: { type: 'fixed', value: 'value' } },
+        { id: 11, match: { type: 'fixed', value: 'custom' }, target: { type: 'fixed', value: 'modified' } },
+        { id: 2, match: { type: 'fixed', value: 'existing' }, target: { type: 'fixed', value: 'default' } }
       ];
 
-      // Manually set localStorage to simulate existing state
       localStorage.setItem('replace-count', existingRules.length.toString());
       existingRules.forEach((rule, index) => {
         localStorage.setItem(`replace-rules-${index + 1}`, JSON.stringify(rule));
@@ -156,20 +154,16 @@ var react = require('react');
 
       const rules = restoreDefaultRules();
 
-      // Should have all default rules + custom rules
-      expect(rules).toHaveLength(DEFAULT_RULES.length + 1); // 10 defaults + 1 custom (id 11)
+      expect(rules).toHaveLength(DEFAULT_RULES.length + 1);
 
-      // Check that default rules are restored
       DEFAULT_RULES.forEach(defaultRule => {
         const found = rules.find(r => r.id === defaultRule.id);
         expect(found).toEqual(defaultRule);
       });
 
-      // Check that custom rules are preserved
       const customRule = rules.find(r => r.id === 11);
       expect(customRule).toEqual(customRules[0]);
 
-      // Custom rule with id 12 should not be there (wasn't in existing rules)
       const missingCustom = rules.find(r => r.id === 12);
       expect(missingCustom).toBeUndefined();
     });
@@ -182,6 +176,6 @@ var react = require('react');
     const input = 'The quick brown fox jumps over the lazy dog. The dog is lazy, and the fox is quick. The the the.';
     const result = applyReplace(input, rules);
     const count = (result.result.match(/THE/g) || []).length;
-    expect(count).toBe(4); // 4 'the'
+    expect(count).toBe(4);
   });
 });

@@ -80,7 +80,7 @@ export function applyReplace(input: string, rules: ReplaceRule[]): ReplaceResult
      const hue = (ruleId * 49) % 360;
      const bgColor = `hsl(${hue}, 85%, 95%)`;
      const borderColor = `hsl(${hue}, 70%, 70%)`;
-      const highlighted = `<span style="background-color: ${bgColor}; color: #000; border: 1px solid ${borderColor}; border-radius: 4px; padding: 2px 4px; margin: 0 1px; font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace; font-weight: 500;">${escapeHtml(target)}</span>`;
+      const highlighted = `<span style="background-color: ${bgColor}; color: #000; border: 1px solid ${borderColor}; border-radius: 4px; padding: 2px 4px; margin: 0 1px; font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace; font-weight: 500;">${target}</span>`;
      console.log(`Replacing placeholder "${id}" with highlighted HTML for rule ${ruleId}: "${target}"`);
      result = result.replace(new RegExp(escapeRegExp(id), 'g'), highlighted);
    });
