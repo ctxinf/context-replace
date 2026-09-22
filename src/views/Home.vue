@@ -156,7 +156,7 @@
                   class="w-2 h-2 rounded-full transition-colors duration-300"
                   :class="displayedMode === 'restore' ? 'bg-violet-500' : 'bg-green-500'"
                 ></span>
-                {{ displayedMode === 'restore' ? (t.restoredText || t.replacedResult) : t.replacedInput }}
+                {{ displayedMode === 'restore' ? t.restoredText : t.replacedInput }}
               </h2>
               <!-- Stats Badge -->
               <div v-if="replaceCount > 0"
@@ -249,7 +249,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted, watch, nextTick } from "vue";
+import { ref, onMounted, onUnmounted, watch, nextTick } from "vue";
 import { useLocalStorage } from "@vueuse/core";
 import { useRulesStore } from "../stores/rules";
 import { initDatabase, runMigrations } from "../database/index";
